@@ -34,7 +34,7 @@ class Parser5ka:
     def __init__(self, start_url):
         self.start_url=start_url
 
-    def _get_response(self, url), **kwargs:
+    def _get_response(self, url, **kwargs):
         while True:
             try:
                 response = requests.get(url, **kwargs)
@@ -47,7 +47,7 @@ class Parser5ka:
     def run(self):
         for products in self.parse(self.start_url):
             for product in products:
-                file_path = Path(__file__).parent.joinpath(f'{product['id']}.json')
+                file_path = Path(__file__).parent.joinpath(f'{product["id"]}.json')
                 self.save_file(file_path, product)
 
     def parse(self, url):
